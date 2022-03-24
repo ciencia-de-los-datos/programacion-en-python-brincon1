@@ -37,8 +37,6 @@ def pregunta_01():
     
     return suma
 
-
-
 def pregunta_02():
     """
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
@@ -54,7 +52,46 @@ def pregunta_02():
     ]
 
     """
-    return
+    import csv
+    csvfile = open("data.csv", "r")
+
+    dic = {}
+    for row in csv.reader(csvfile):
+   # Extrae la primera columna
+        second = row[0]
+    # Dividir por el caracter espacio
+        ter = second.split() 
+    #Trae la primera columna
+        col = ter[0]
+        if col not in dic:
+            dic[col] = 1
+        else:
+            dic[col] += 1
+
+    tupla = list(zip(dic.keys(), dic.values()))
+    tupla.sort()
+    
+    return tupla
+
+# import csv
+# csvfile = open("data.csv", "r")
+
+# dic = {}
+# for row in csv.reader(csvfile):
+#    # Extrae la primera columna
+#         second = row[0]
+#     # Dividir por el caracter espacio
+#         ter = second.split() 
+#     #Trae la primera columna
+#         col = ter[0]
+#         if col not in dic:
+#             dic[col] = 1
+#         else:
+#             dic[col] += 1
+
+# tupla = list(zip(dic.keys(), dic.values()))
+# tupla.sort()
+# print(tupla)
 
 
 def pregunta_03():
@@ -72,6 +109,8 @@ def pregunta_03():
     ]
 
     """
+
+
     return
 
 
