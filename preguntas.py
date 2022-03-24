@@ -21,7 +21,39 @@ def pregunta_01():
     214
 
     """
+    import csv
+
+    csvfile = open("C:\\Users\\brend\\OneDrive\\Documentos\\GitHub\\programacion-en-python-brincon1\\data.csv", "r")
+
+    segundaCol =[]
+    for row in csv.reader(csvfile):
+    # Extrae la primera columna
+        second = row[0]
+    # Dividir por el caracter espacio
+        ter = second.split()
+    #Trae la segunda columna
+        col = ter[1]
+        segundaCol.append(int(col))
+
+    print(sum(segundaCol))
+    
     return
+
+# import csv
+
+# csvfile = open("C:\\Users\\brend\\OneDrive\\Documentos\\GitHub\\programacion-en-python-brincon1\\data.csv", "r")
+
+# segundaCol =[]
+# for row in csv.reader(csvfile):
+#     # Extrae la primera columna
+#     second = row[0]
+#     # Dividir por el caracter espacio
+#     ter = second.split()
+#     #Trae la segunda columna
+#     col = ter[1]
+#     segundaCol.append(int(col))
+
+# print(sum(segundaCol))
 
 
 def pregunta_02():
