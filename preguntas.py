@@ -11,7 +11,8 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-
+import csv
+csvfile = open("data.csv", "r")
 
 def pregunta_01():
     """
@@ -21,9 +22,7 @@ def pregunta_01():
     214
 
     """
-    import csv
-    csvfile = open("data.csv", "r")
-
+    
     segundaCol =[]
     for row in csv.reader(csvfile):
     # Extrae la primera columna
