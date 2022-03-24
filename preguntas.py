@@ -22,7 +22,6 @@ def pregunta_01():
 
     """
     import csv
-
     csvfile = open("C:\\Users\\brend\\OneDrive\\Documentos\\GitHub\\programacion-en-python-brincon1\\data.csv", "r")
 
     segundaCol =[]
@@ -34,10 +33,9 @@ def pregunta_01():
     #Trae la segunda columna
         col = ter[1]
         segundaCol.append(int(col))
-
-    print(sum(segundaCol))
+        suma = sum(segundaCol)
     
-    return
+    return suma
 
 # import csv
 
