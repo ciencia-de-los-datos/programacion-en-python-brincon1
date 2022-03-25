@@ -304,7 +304,7 @@ def pregunta_07():
         division = primerCol.split()
         segundaCol = division[0]
         primeraCol = division[1]
-        
+                
         lisLetras =[]
         if primeraCol not in dic:
             lisLetras.append(segundaCol)
@@ -312,12 +312,16 @@ def pregunta_07():
         elif primeraCol in dic:
             lisLetras.append(segundaCol)
             dic[primeraCol] += lisLetras
-
     #print(dic)
     listaNumeros = list(dic.keys())
     listaLetras = list(dic.values())
 
-    final = list(zip(listaNumeros, listaLetras))
+    nuevalistaNumeros = []
+    for i in listaNumeros:
+        i = int(i)
+        nuevalistaNumeros.append(i)
+
+    final = list(zip(nuevalistaNumeros, listaLetras))
     final.sort()
 
     return final
@@ -328,7 +332,7 @@ def pregunta_07():
 #     division = primerCol.split()
 #     segundaCol = division[0]
 #     primeraCol = division[1]
-    
+        
 #     lisLetras =[]
 #     if primeraCol not in dic:
 #         lisLetras.append(segundaCol)
@@ -336,30 +340,18 @@ def pregunta_07():
 #     elif primeraCol in dic:
 #         lisLetras.append(segundaCol)
 #         dic[primeraCol] += lisLetras
-
-# #print(dic)
+#     #print(dic)
 # listaNumeros = list(dic.keys())
 # listaLetras = list(dic.values())
 
-# final = list(zip(listaNumeros, listaLetras))
+# nuevalistaNumeros = []
+# for i in listaNumeros:
+#     i = int(i)
+#     nuevalistaNumeros.append(i)
+
+# final = list(zip(nuevalistaNumeros, listaLetras))
 # final.sort()
 # print(final)
-
-# listaNumeros = list(dic.keys())
-# listaLetras = list(dic.values())
-
-# #print(listaLetras)
-# nuevaLista = []
-# for lista in listaLetras:
-#     lisSinRepetir = list(set(lista))
-#     print(lisSinRepetir)
-#     nuevaLista.append(lisSinRepetir)
-    
-# final = list(zip(listaNumeros, nuevaLista))
-# final.sort()
-# print (final)
-
-    
 
 
 
@@ -415,8 +407,16 @@ def pregunta_08():
         lisSinRepetir = list(set(lista))
         print(lisSinRepetir)
         nuevaLista.append(lisSinRepetir)
+    
+    nuevalistaNumeros = []
+    for i in listaNumeros:
+        i = int(i)
+        nuevalistaNumeros.append(i)
+
+    final = list(zip(nuevalistaNumeros, listaLetras))
+    final.sort()
         
-    final = list(zip(listaNumeros, nuevaLista))
+    final = list(zip(nuevalistaNumeros, nuevaLista))
     final.sort()
    
     return final
