@@ -87,20 +87,18 @@ def pregunta_03():
     """
     dic = {}
     for row in csv.reader(csvfile):
-   # Extrae la primera columna
+    # Extrae la primera columna
         primeraCol = row[0]
     # Dividir por el caracter espacio
         divisionCol = primeraCol.split() 
     #Trae la primera y segunda columna
         primerCol = divisionCol[0]
         secondCol = divisionCol[1]
-    # si la primera clave no esta en la lista agreguela y su valor será 
-    # la segunda columna pero si ya esta en el diccionario su valor será
-    # el valor actual + el nuevo valor de la segunda columna como entero.
+    # si la primera clave no esta en la lista agreguela y su valor será la segunda columna pero si ya esta en el diccionario su valor será el valor actual + el nuevo valor de la segunda columna como entero.
     if primerCol not in dic:
         dic[primerCol] = int(secondCol)
     else:
-        dic[primerCol] = dic[primerCol] + int(secondCol)
+        dic[primerCol] += int(secondCol)
 
     tupla = list(zip(dic.keys(), dic.values()))
     tupla.sort()
