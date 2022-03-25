@@ -383,7 +383,7 @@ def pregunta_08():
         division = primerCol.split()
         segundaCol = division[0]
         primeraCol = division[1]
-        
+                
         lisLetras =[]
         if primeraCol not in dic:
             lisLetras.append(segundaCol)
@@ -392,12 +392,6 @@ def pregunta_08():
             lisLetras.append(segundaCol)
             dic[primeraCol] += lisLetras
 
-#print(dic)
-
-# final = list(zip(listaNumeros, listaLetras))
-# final.sort()
-# print(final)
-
     listaNumeros = list(dic.keys())
     listaLetras = list(dic.values())
 
@@ -405,7 +399,7 @@ def pregunta_08():
     nuevaLista = []
     for lista in listaLetras:
         lisSinRepetir = list(set(lista))
-        print(lisSinRepetir)
+        #print(lisSinRepetir)
         nuevaLista.append(lisSinRepetir)
     
     nuevalistaNumeros = []
@@ -413,8 +407,6 @@ def pregunta_08():
         i = int(i)
         nuevalistaNumeros.append(i)
 
-    final = list(zip(nuevalistaNumeros, listaLetras))
-    final.sort()
         
     final = list(zip(nuevalistaNumeros, nuevaLista))
     final.sort()
