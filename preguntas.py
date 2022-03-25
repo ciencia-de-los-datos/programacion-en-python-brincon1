@@ -11,7 +11,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-from __future__ import division
+
 import csv
 
 csvfile = open("data.csv", "r")
@@ -191,7 +191,7 @@ def pregunta_05():
         if tercerCol not in dicMenor:
             menor = int(cuartaCol)
             dicMenor[tercerCol] = menor
-        elif tercerCol in dicMenor:
+        elif tercerCol in dicMenor: 
             if int(cuartaCol) < dicMenor[tercerCol]:
                 menor = int(cuartaCol)
                 dicMenor[tercerCol] = menor
@@ -276,51 +276,6 @@ def pregunta_06():
     final = list(zip(listaLetras, listaMenor, listaMayor))
     final.sort()
     return final
-
-# dicMayor = {}
-# dicMenor = {}
-# listaVal = []
-# for row in csv.reader(csvfile):
-#     restodeCol = row[2:]
-#     # print (restodeCol)
-#     for i in restodeCol:
-#         dividir = i.split()
-#         for letra in dividir:
-#             if len(letra) < 2: continue
-#             # print(letra)
-#             valores = letra.split(":")
-#             tercerCol = valores[0]
-#             cuartaCol = valores[1]
-#             #print (valores)  
-#             mayor = None
-#             menor = None
-        
-#             if tercerCol not in dicMayor:
-#                 mayor = int(cuartaCol)
-#                 dicMayor[tercerCol] = mayor
-#             elif tercerCol in dicMayor:
-#                 if int(cuartaCol) > dicMayor[tercerCol]:
-#                     mayor = int(cuartaCol)
-#                     dicMayor[tercerCol] = mayor
-#             if tercerCol not in dicMenor:
-#                 menor = int(cuartaCol)
-#                 dicMenor[tercerCol] = menor
-#             elif tercerCol in dicMenor:
-#                 if int(cuartaCol) < dicMenor[tercerCol]:
-#                     menor = int(cuartaCol)
-#                     dicMenor[tercerCol] = menor
-   
-# listaLetras = list(dicMayor.keys())
-# listaMayor = list(dicMayor.values())
-# listaMenor = list(dicMenor.values())
-
-# print(listaLetras)
-# print (listaMayor)
-# print (listaMenor)
-
-# final = list(zip(listaLetras, listaMenor, listaMayor))
-# final.sort()
-# print(final)
     
 def pregunta_07():
     """
@@ -343,7 +298,69 @@ def pregunta_07():
     ]
 
     """
-    return
+    dic = {}
+    for row in csv.reader(csvfile):
+        primerCol = row[0]
+        division = primerCol.split()
+        segundaCol = division[0]
+        primeraCol = division[1]
+        
+        lisLetras =[]
+        if primeraCol not in dic:
+            lisLetras.append(segundaCol)
+            dic[primeraCol] = lisLetras      
+        elif primeraCol in dic:
+            lisLetras.append(segundaCol)
+            dic[primeraCol] += lisLetras
+
+    #print(dic)
+    listaNumeros = list(dic.keys())
+    listaLetras = list(dic.values())
+
+    final = list(zip(listaNumeros, listaLetras))
+    final.sort()
+
+    return final
+
+# dic = {}
+# for row in csv.reader(csvfile):
+#     primerCol = row[0]
+#     division = primerCol.split()
+#     segundaCol = division[0]
+#     primeraCol = division[1]
+    
+#     lisLetras =[]
+#     if primeraCol not in dic:
+#         lisLetras.append(segundaCol)
+#         dic[primeraCol] = lisLetras      
+#     elif primeraCol in dic:
+#         lisLetras.append(segundaCol)
+#         dic[primeraCol] += lisLetras
+
+# #print(dic)
+# listaNumeros = list(dic.keys())
+# listaLetras = list(dic.values())
+
+# final = list(zip(listaNumeros, listaLetras))
+# final.sort()
+# print(final)
+
+# listaNumeros = list(dic.keys())
+# listaLetras = list(dic.values())
+
+# #print(listaLetras)
+# nuevaLista = []
+# for lista in listaLetras:
+#     lisSinRepetir = list(set(lista))
+#     print(lisSinRepetir)
+#     nuevaLista.append(lisSinRepetir)
+    
+# final = list(zip(listaNumeros, nuevaLista))
+# final.sort()
+# print (final)
+
+    
+
 
 
 def pregunta_08():
@@ -368,7 +385,41 @@ def pregunta_08():
     ]
 
     """
-    return
+    dic = {}
+    for row in csv.reader(csvfile):
+        primerCol = row[0]
+        division = primerCol.split()
+        segundaCol = division[0]
+        primeraCol = division[1]
+        
+        lisLetras =[]
+        if primeraCol not in dic:
+            lisLetras.append(segundaCol)
+            dic[primeraCol] = lisLetras      
+        elif primeraCol in dic:
+            lisLetras.append(segundaCol)
+            dic[primeraCol] += lisLetras
+
+#print(dic)
+
+# final = list(zip(listaNumeros, listaLetras))
+# final.sort()
+# print(final)
+
+    listaNumeros = list(dic.keys())
+    listaLetras = list(dic.values())
+
+    #print(listaLetras)
+    nuevaLista = []
+    for lista in listaLetras:
+        lisSinRepetir = list(set(lista))
+        print(lisSinRepetir)
+        nuevaLista.append(lisSinRepetir)
+        
+    final = list(zip(listaNumeros, nuevaLista))
+    final.sort()
+   
+    return final
 
 
 def pregunta_09():
