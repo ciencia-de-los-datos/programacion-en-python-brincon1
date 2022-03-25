@@ -107,6 +107,7 @@ def pregunta_03():
 
     return tupla
 
+
 def pregunta_04():
     """
     La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
