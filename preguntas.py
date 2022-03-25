@@ -399,6 +399,7 @@ def pregunta_08():
     nuevaLista = []
     for lista in listaLetras:
         lisSinRepetir = list(set(lista))
+        lisSinRepetir.sort()
         #print(lisSinRepetir)
         nuevaLista.append(lisSinRepetir)
     
@@ -412,6 +413,43 @@ def pregunta_08():
     final.sort()
    
     return final
+
+# dic = {}
+# for row in csv.reader(csvfile):
+#     primerCol = row[0]
+#     division = primerCol.split()
+#     segundaCol = division[0]
+#     primeraCol = division[1]
+                
+#     lisLetras =[]
+#     if primeraCol not in dic:
+#         lisLetras.append(segundaCol)
+#         dic[primeraCol] = lisLetras      
+#     elif primeraCol in dic:
+#         lisLetras.append(segundaCol)
+#         dic[primeraCol] += lisLetras
+
+# listaNumeros = list(dic.keys())
+# listaLetras = list(dic.values())
+
+#     #print(listaLetras)
+# nuevaLista = []
+# for lista in listaLetras:
+#     lisSinRepetir = list(set(lista))
+#     print(lisSinRepetir)
+#     lisSinRepetir.sort()
+#     print(lisSinRepetir)
+#     nuevaLista.append(lisSinRepetir)
+    
+# nuevalistaNumeros = []
+# for i in listaNumeros:
+#     i = int(i)
+#     nuevalistaNumeros.append(i)
+        
+# final = list(zip(nuevalistaNumeros, nuevaLista))
+# final.sort()
+
+# print(final)
 
 
 def pregunta_09():
