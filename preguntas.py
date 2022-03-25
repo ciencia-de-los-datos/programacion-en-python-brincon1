@@ -196,66 +196,20 @@ def pregunta_05():
                 menor = int(cuartaCol)
                 dicMenor[tercerCol] = menor
         #print (dicMenor)
-    print(dicMenor)
-    print(dicMayor)
+    # print(dicMenor)
+    # print(dicMayor)
     listaLetras = list(dicMayor.keys())
     listaMayor = list(dicMayor.values())
     listaMenor = list(dicMenor.values())
 
-    print(listaLetras)
-    print (listaMayor)
-    print (listaMenor)
+    # print(listaLetras)
+    # print (listaMayor)
+    # print (listaMenor)
 
     final = list(zip(listaLetras, listaMayor, listaMenor))
     final.sort()
 
     return final
-
-# dicMayor = {}
-# dicMenor = {}
-# for row in csv.reader(csvfile):
-#    # Extrae la primera columna
-#     primeraCol = row[0]
-#     # Dividir por el caracter espacio
-#     divisionCol = primeraCol.split() 
-#     #Trae la tercera columna de la primera columna
-#     tercerCol = divisionCol[0]
-#     cuartaCol = divisionCol[1]
-#     #dic[tercerCol] = dic.get(tercerCol, cuartaCol) 
-#     #dic[tercerCol] = dic.get(tercerCol, cuartaCol) + cuartaCol  
-#     mayor = None
-#     menor = None
-    
-#     if tercerCol not in dicMayor:
-#         mayor = int(cuartaCol)
-#         dicMayor[tercerCol] = mayor
-#     elif tercerCol in dicMayor:
-#         if int(cuartaCol) > dicMayor[tercerCol]:
-#             mayor = int(cuartaCol)
-#             dicMayor[tercerCol] = mayor
-#     #print (dicMayor)
-#     if tercerCol not in dicMenor:
-#         menor = int(cuartaCol)
-#         dicMenor[tercerCol] = menor
-#     elif tercerCol in dicMenor:
-#         if int(cuartaCol) < dicMenor[tercerCol]:
-#             menor = int(cuartaCol)
-#             dicMenor[tercerCol] = menor
-#     #print (dicMenor)
-# print(dicMenor)
-# print(dicMayor)
-# listaLetras = list(dicMayor.keys())
-# listaMayor = list(dicMayor.values())
-# listaMenor = list(dicMenor.values())
-
-# print(listaLetras)
-# print (listaMayor)
-# print (listaMenor)
-
-# final = list(zip(listaLetras, listaMayor, listaMenor))
-# final.sort()
-# print (final)
-
 
 def pregunta_06():
     """
@@ -279,9 +233,95 @@ def pregunta_06():
     ]
 
     """
-    return
+    dicMayor = {}
+    dicMenor = {}
+    for row in csv.reader(csvfile):
+        restodeCol = row[2:]
+        # print (restodeCol)
+        for i in restodeCol:
+            dividir = i.split()
+            for letra in dividir:
+                if len(letra) < 2: continue
+                # print(letra)
+                valores = letra.split(":")
+                tercerCol = valores[0]
+                cuartaCol = valores[1]
+                #print (valores)  
+                mayor = None
+                menor = None
+            
+                if tercerCol not in dicMayor:
+                    mayor = int(cuartaCol)
+                    dicMayor[tercerCol] = mayor
+                elif tercerCol in dicMayor:
+                    if int(cuartaCol) > dicMayor[tercerCol]:
+                        mayor = int(cuartaCol)
+                        dicMayor[tercerCol] = mayor
+                if tercerCol not in dicMenor:
+                    menor = int(cuartaCol)
+                    dicMenor[tercerCol] = menor
+                elif tercerCol in dicMenor:
+                    if int(cuartaCol) < dicMenor[tercerCol]:
+                        menor = int(cuartaCol)
+                        dicMenor[tercerCol] = menor
+    
+    listaLetras = list(dicMayor.keys())
+    listaMayor = list(dicMayor.values())
+    listaMenor = list(dicMenor.values())
 
+    # print(listaLetras)
+    # print (listaMayor)
+    # print (listaMenor)
 
+    final = list(zip(listaLetras, listaMenor, listaMayor))
+    final.sort()
+    return final
+
+# dicMayor = {}
+# dicMenor = {}
+# listaVal = []
+# for row in csv.reader(csvfile):
+#     restodeCol = row[2:]
+#     # print (restodeCol)
+#     for i in restodeCol:
+#         dividir = i.split()
+#         for letra in dividir:
+#             if len(letra) < 2: continue
+#             # print(letra)
+#             valores = letra.split(":")
+#             tercerCol = valores[0]
+#             cuartaCol = valores[1]
+#             #print (valores)  
+#             mayor = None
+#             menor = None
+        
+#             if tercerCol not in dicMayor:
+#                 mayor = int(cuartaCol)
+#                 dicMayor[tercerCol] = mayor
+#             elif tercerCol in dicMayor:
+#                 if int(cuartaCol) > dicMayor[tercerCol]:
+#                     mayor = int(cuartaCol)
+#                     dicMayor[tercerCol] = mayor
+#             if tercerCol not in dicMenor:
+#                 menor = int(cuartaCol)
+#                 dicMenor[tercerCol] = menor
+#             elif tercerCol in dicMenor:
+#                 if int(cuartaCol) < dicMenor[tercerCol]:
+#                     menor = int(cuartaCol)
+#                     dicMenor[tercerCol] = menor
+   
+# listaLetras = list(dicMayor.keys())
+# listaMayor = list(dicMayor.values())
+# listaMenor = list(dicMenor.values())
+
+# print(listaLetras)
+# print (listaMayor)
+# print (listaMenor)
+
+# final = list(zip(listaLetras, listaMenor, listaMayor))
+# final.sort()
+# print(final)
+    
 def pregunta_07():
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
