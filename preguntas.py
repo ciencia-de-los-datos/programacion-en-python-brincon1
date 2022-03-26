@@ -12,7 +12,10 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+
 import csv
+from collections import Counter, defaultdict
+
 
 csvfile = open("data.csv", "r")
 
@@ -472,7 +475,58 @@ def pregunta_09():
     }
 
     """
-    return
+    dic = {}
+
+    for row in csv.reader(csvfile):
+        restodeCol = row[1:]
+        #print (restodeCol)
+        for i in restodeCol:
+            dividir = i.split()
+            #print(dividir)
+            for letra in dividir:
+                if len(letra) < 2: continue
+                #print(letra)
+                valores = letra.split(":")
+                tercerCol = valores[0]
+                # cuartaCol = valores[1]
+                dic[tercerCol] = dic.get(tercerCol, 0) +1
+
+    lst = list(dic.keys())
+    lst.sort()
+    dicOrdenado={}
+    for clave in lst:
+        dicOrdenado[clave] = dic[clave]
+    # print(dic)
+    #print(dicOrdenado)
+    return dicOrdenado
+
+# dic = {}
+
+# for row in csv.reader(csvfile):
+#     restodeCol = row[1:]
+#     #print (restodeCol)
+#     for i in restodeCol:
+#         dividir = i.split()
+#         #print(dividir)
+#         for letra in dividir:
+#             if len(letra) < 2: continue
+#             #print(letra)
+#             valores = letra.split(":")
+#             tercerCol = valores[0]
+#             # cuartaCol = valores[1]
+#             dic[tercerCol] = dic.get(tercerCol, 0) +1
+
+# lst = list(dic.keys())
+# lst.sort()
+# dicOrdenado={}
+# for clave in lst:
+#     dicOrdenado[clave] = dic[clave]
+# # print(dic)
+# print(dicOrdenado)
+        
+         
+           
+
 
 
 def pregunta_10():
