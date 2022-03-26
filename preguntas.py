@@ -16,6 +16,8 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 import csv
 from collections import Counter, defaultdict
 
+from numpy import append
+
 
 csvfile = open("data.csv", "r")
 
@@ -329,35 +331,6 @@ def pregunta_07():
 
     return final
 
-# dic = {}
-# for row in csv.reader(csvfile):
-#     primerCol = row[0]
-#     division = primerCol.split()
-#     segundaCol = division[0]
-#     primeraCol = division[1]
-        
-#     lisLetras =[]
-#     if primeraCol not in dic:
-#         lisLetras.append(segundaCol)
-#         dic[primeraCol] = lisLetras      
-#     elif primeraCol in dic:
-#         lisLetras.append(segundaCol)
-#         dic[primeraCol] += lisLetras
-#     #print(dic)
-# listaNumeros = list(dic.keys())
-# listaLetras = list(dic.values())
-
-# nuevalistaNumeros = []
-# for i in listaNumeros:
-#     i = int(i)
-#     nuevalistaNumeros.append(i)
-
-# final = list(zip(nuevalistaNumeros, listaLetras))
-# final.sort()
-# print(final)
-
-
-
 def pregunta_08():
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
@@ -417,43 +390,6 @@ def pregunta_08():
    
     return final
 
-# dic = {}
-# for row in csv.reader(csvfile):
-#     primerCol = row[0]
-#     division = primerCol.split()
-#     segundaCol = division[0]
-#     primeraCol = division[1]
-                
-#     lisLetras =[]
-#     if primeraCol not in dic:
-#         lisLetras.append(segundaCol)
-#         dic[primeraCol] = lisLetras      
-#     elif primeraCol in dic:
-#         lisLetras.append(segundaCol)
-#         dic[primeraCol] += lisLetras
-
-# listaNumeros = list(dic.keys())
-# listaLetras = list(dic.values())
-
-#     #print(listaLetras)
-# nuevaLista = []
-# for lista in listaLetras:
-#     lisSinRepetir = list(set(lista))
-#     print(lisSinRepetir)
-#     lisSinRepetir.sort()
-#     print(lisSinRepetir)
-#     nuevaLista.append(lisSinRepetir)
-    
-# nuevalistaNumeros = []
-# for i in listaNumeros:
-#     i = int(i)
-#     nuevalistaNumeros.append(i)
-        
-# final = list(zip(nuevalistaNumeros, nuevaLista))
-# final.sort()
-
-# print(final)
-
 
 def pregunta_09():
     """
@@ -499,35 +435,7 @@ def pregunta_09():
     # print(dic)
     #print(dicOrdenado)
     return dicOrdenado
-
-# dic = {}
-
-# for row in csv.reader(csvfile):
-#     restodeCol = row[1:]
-#     #print (restodeCol)
-#     for i in restodeCol:
-#         dividir = i.split()
-#         #print(dividir)
-#         for letra in dividir:
-#             if len(letra) < 2: continue
-#             #print(letra)
-#             valores = letra.split(":")
-#             tercerCol = valores[0]
-#             # cuartaCol = valores[1]
-#             dic[tercerCol] = dic.get(tercerCol, 0) +1
-
-# lst = list(dic.keys())
-# lst.sort()
-# dicOrdenado={}
-# for clave in lst:
-#     dicOrdenado[clave] = dic[clave]
-# # print(dic)
-# print(dicOrdenado)
-        
-         
-           
-
-
+       
 
 def pregunta_10():
     """
@@ -547,9 +455,37 @@ def pregunta_10():
 
 
     """
-    return
+    csvfile = open("data.csv", "r")
+    x = csvfile.readlines()
+    #print(x)
+    lineas = [linea.replace("\t", " ") for linea in x]
+    #print(lineas)
+    division =[x.split() for x in lineas]
+    #print(division)
+    columnaCero = [columna[0] for columna in division]
+    #print(columnaCero)
+    columnacuatro=[cuartaCol[3] for cuartaCol in division]
+    #print(columnacuatro)
+    numColFour = []
+    for letra in columnacuatro:
+        di = letra.split(",")
+        ancho = len(di)
+        numColFour.append(ancho)
+    #print(numColFour)
+    columnacinco=[cincoCol[4] for cincoCol in division] 
+    #print(columnacinco)
+    numColFive = []
+    for letra in columnacinco:
+        di = letra.split(",")
+        ancho = len(di)
+        numColFive.append(ancho)
+    #print(numColFive)
 
-
+    final= list(zip(columnaCero, numColFour, numColFive))
+    
+    return final
+      
+         
 def pregunta_11():
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
@@ -568,7 +504,46 @@ def pregunta_11():
 
 
     """
-    return
+    csvfile = open("data.csv", "r")
+    x = csvfile.readlines()
+    #print(x)
+    lineas = [linea.replace("\t", " ") for linea in x]
+    #print(lineas)
+    division =[x.split() for x in lineas]
+    #print(division)
+    columnaCero = [columna[1] for columna in division]
+    #print(columnaCero)
+    columnacuatro=[cuartaCol[3] for cuartaCol in division]
+    #print(columnacuatro)
+    numColFour = []
+    for letra in columnacuatro:
+        di = letra.split(",")
+        numColFour.append(di)
+
+    unionCol = list(zip(columnaCero, numColFour))
+    unionCol.sort()
+    #print(final)
+    dicc = {}
+    for i in unionCol:
+        colUno = i[0]
+        colDos = i[1]
+        for letra in colDos:
+            if letra not in dicc:
+                dicc[letra] = int(colUno)
+            elif letra in dicc:
+                dicc[letra] = dicc[letra] + int(colUno)
+
+    #print(dicc)
+
+    listaLetras = list(dicc.keys())
+    listaLetras.sort()
+
+    dicOrdenado={}
+    for clave in listaLetras:
+        dicOrdenado[clave] = dicc[clave]
+
+    #print(dicOrdenado)
+    return dicOrdenado
 
 
 def pregunta_12():
@@ -586,4 +561,90 @@ def pregunta_12():
     }
 
     """
-    return
+    csvfile = open("data.csv", "r")
+    x = csvfile.readlines()
+    #print(x)
+    lineas = [linea.replace("\t", " ") for linea in x]
+    #print(lineas)
+    division =[x.split() for x in lineas]
+    #print(division)
+    columnaCero = [columna[0] for columna in division]
+    #print(columnaCero)
+    columnacinco=[cuartaCol[4] for cuartaCol in division]
+    #print(columnacinco)
+    div =[]
+
+    for x in columnacinco:
+        di = x.split(",")
+        div.append(di)
+    #print(div)
+
+    unionCol = list(zip(columnaCero, div))
+    #print(unionCol)
+
+    dicc = {}
+    for i in unionCol:
+        colUno = i[0]
+        colDos = i[1]
+        for letra in colDos:
+            newletra = letra[4:]
+            if colUno not in dicc:
+                dicc[colUno] = int(newletra)
+            else: 
+                dicc[colUno] = dicc[colUno] + int(newletra)
+
+    #print (dicc)
+    listaLetras = list(dicc.keys())
+    listaLetras.sort()
+
+    dicOrdenado={}
+    for clave in listaLetras:
+        dicOrdenado[clave] = dicc[clave]
+
+    #print(dicOrdenado)
+
+    return dicOrdenado
+
+# csvfile = open("data.csv", "r")
+# x = csvfile.readlines()
+# #print(x)
+# lineas = [linea.replace("\t", " ") for linea in x]
+# #print(lineas)
+# division =[x.split() for x in lineas]
+# #print(division)
+# columnaCero = [columna[0] for columna in division]
+# #print(columnaCero)
+# columnacinco=[cuartaCol[4] for cuartaCol in division]
+# #print(columnacinco)
+# div =[]
+
+# for x in columnacinco:
+#     di = x.split(",")
+#     div.append(di)
+# #print(div)
+
+# unionCol = list(zip(columnaCero, div))
+# #print(unionCol)
+
+# dicc = {}
+# for i in unionCol:
+#     colUno = i[0]
+#     colDos = i[1]
+#     for letra in colDos:
+#         newletra = letra[4:]
+#         if colUno not in dicc:
+#             dicc[colUno] = int(newletra)
+#         else: 
+#             dicc[colUno] = dicc[colUno] + int(newletra)
+
+# print (dicc)
+# listaLetras = list(dicc.keys())
+# listaLetras.sort()
+
+# dicOrdenado={}
+# for clave in listaLetras:
+#     dicOrdenado[clave] = dicc[clave]
+
+# print(dicOrdenado)
+  
+
