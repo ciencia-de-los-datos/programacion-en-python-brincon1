@@ -16,9 +16,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 import csv
 from collections import Counter, defaultdict
 
-from numpy import append
-
-
 csvfile = open("data.csv", "r")
 
 def pregunta_01():
